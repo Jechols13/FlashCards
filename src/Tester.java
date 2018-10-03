@@ -6,8 +6,10 @@ public class Tester {
         String input ="";
         Master master = new Master();
 
-        System.out.println("Hello. Welcome to Flashcards. \nTo create a new Flashcard, enter in 'flash' at any time. \nTo begin study, just enter" +
-                "'study' at anytime.\nTo exit the program, 'exit'");
+        System.out.println("Hello. Welcome to Flashcards. " +
+                "\nTo create a new Flashcard, enter in 'flash' at any time. " +
+                "\nTo begin study, just enter 'study' at anytime." +
+                "\nTo exit the program, 'exit'");
 
         Scanner in = new Scanner(System.in);
         input =  in.nextLine();

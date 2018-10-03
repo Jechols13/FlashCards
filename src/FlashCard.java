@@ -1,8 +1,7 @@
 public class FlashCard {
 
-    private int id; // the unique id assigned to book
-    private String front; // book title
-    private String back;// author of the book
+    private String front; // Front of flashcard
+    private String back;// Back of flashcard
 
     public FlashCard() {
         super();
@@ -30,13 +29,6 @@ public class FlashCard {
         this.back = back;
     }
 
-//	public String getAuthorName() {
-//		return authorName;
-//	}
-//
-//	public void setAuthorName(String authorName) {
-//		this.authorName = authorName;
-//	}
 
     @Override
     public String toString() {
