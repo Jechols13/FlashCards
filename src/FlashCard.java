@@ -40,8 +40,13 @@ public class FlashCard {
 
     @Override
     public String toString() {
-        return "\n FlashCard [ Front= " + front + ", Back= "
-                + back + "]";
+        int i = (int) (Math.random()*10);
+        if( i < 5){
+            return  front + "";
+        }
+        else {
+            return back + "";
+        }
     }
 
 }

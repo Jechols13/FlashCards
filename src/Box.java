@@ -4,10 +4,12 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Box {
+    private int boxNum;
 
     private List<FlashCard> flashcards; // store flashcards in a list
 
-    public Box() {
+    public Box(int i) {
+        this.boxNum = i;
         flashcards = new ArrayList<FlashCard>();
 
     }
@@ -15,6 +17,10 @@ public class Box {
     public void addFlashcard(FlashCard b1) {
         flashcards.add(b1);
 
+    }
+
+    public int getBoxNum(){
+        return this.boxNum;
     }
 
 //	public List<FlashCard> getflashcardsSortedByAuthor() {
