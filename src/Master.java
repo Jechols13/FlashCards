@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Master {
@@ -10,7 +12,6 @@ public class Master {
     FlashCard x;
 
 
-    String input = "";
     String front = "";
     String back = "";
 
@@ -54,7 +55,7 @@ public class Master {
 
 
     /**
-     * Randomly selects material to study.
+     * Randomly selects flashcard to study.
      */
     public void Study() {
 
@@ -159,16 +160,16 @@ public class Master {
     }
 
     public void moveForward(FlashCard f, Box b) {
-        if (b.getBoxNum() == 1) {
+        if (b.id() == 1) {
             b.deleteFlashcard(f);
             box2.addFlashcard(f);
-        } else if (b.getBoxNum() == 2) {
+        } else if (b.id() == 2) {
             b.deleteFlashcard(f);
             box3.addFlashcard(f);
-        } else if (b.getBoxNum() == 3) {
+        } else if (b.id() == 3) {
             b.deleteFlashcard(f);
             box4.addFlashcard(f);
-        } else if (b.getBoxNum() == 4) {
+        } else if (b.id() == 4) {
             b.deleteFlashcard(f);
             box5.addFlashcard(f);
         } else {
@@ -177,21 +178,43 @@ public class Master {
     }
 
     public void moveBack(FlashCard f, Box b) {
-        if (b.getBoxNum() == 2) {
+        if (b.id() == 2) {
             b.deleteFlashcard(f);
             box1.addFlashcard(f);
-        } else if (b.getBoxNum() == 3) {
+        } else if (b.id() == 3) {
             b.deleteFlashcard(f);
             box2.addFlashcard(f);
-        } else if (b.getBoxNum() == 4) {
+        } else if (b.id() == 4) {
             b.deleteFlashcard(f);
             box3.addFlashcard(f);
-        } else if (b.getBoxNum() == 5) {
+        } else if (b.id() == 5) {
             b.deleteFlashcard(f);
             box4.addFlashcard(f);
         } else {
 
         }
 
+    }
+
+    public  void readFile(String fileName) throws FileNotFoundException
+    {
+        File f = new File(fileName);
+        Scanner in = new Scanner(f);
+        in.useDelimiter(" \n");
+        while (in.hasNext()) {
+            this.front = in.nextLine();
+            if(!(front.equals(""))){
+             this.back = in.nextLine();
+             this.x = new FlashCard(this.front, this.back);
+             this.box1.addFlashcard(this.x);}
+        }
+
+        in.close();
+    }
+
+    public ArrayList<FlashCard> getCardsWith(String pattern){
+        ArrayList<FlashCard> matches = new ArrayList<FlashCard>();
+
+        return matches;
     }
 }

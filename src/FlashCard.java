@@ -9,6 +9,7 @@ public class FlashCard {
 
     public FlashCard( String front, String back) {
 
+        assert front != null &&  back != null;
         this.front = front;
         this.back = back;
     }
