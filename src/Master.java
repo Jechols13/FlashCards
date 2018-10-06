@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.Scanner;
 
 public class Master {
@@ -196,25 +197,48 @@ public class Master {
 
     }
 
-    public  void readFile(String fileName) throws FileNotFoundException
-    {
+    public void readFile(String fileName) throws FileNotFoundException {
         File f = new File(fileName);
         Scanner in = new Scanner(f);
         in.useDelimiter(" \n");
         while (in.hasNext()) {
             this.front = in.nextLine();
-            if(!(front.equals(""))){
-             this.back = in.nextLine();
-             this.x = new FlashCard(this.front, this.back);
-             this.box1.addFlashcard(this.x);}
+            if (!(front.equals(""))) {
+                this.back = in.nextLine();
+                this.x = new FlashCard(this.front, this.back);
+                this.box1.addFlashcard(this.x);
+            }
         }
 
         in.close();
     }
 
-    public ArrayList<FlashCard> getCardsWith(String pattern){
+    public ArrayList<FlashCard> getCardsWith(String pattern) {
+        assert pattern != null || pattern != "";
         ArrayList<FlashCard> matches = new ArrayList<FlashCard>();
+        Stack<Box> all = new Stack<Box>();
 
+        if (box5.getFlashcards().size() == 0 && box4.getFlashcards().size() == 0 && box3.getFlashcards().size() == 0
+                && box2.getFlashcards().size() == 0 && box1.getFlashcards().size() == 0) {
+            System.out.println("Oops. Looks like you dont have any Flashcards yet!");
+        } else {
+
+            //Push all boxes into a stack.
+            all.push(box1);
+            all.push(box2);
+            all.push(box3);
+            all.push(box4);
+            all.push(box5);
+
+            // Iterate through stack then iterate through cards to find matches.
+            for (Box x : all) {
+                for (FlashCard y : x.getFlashcards()) {
+                    if (y.getFront().toLowerCase().matches(pattern.toLowerCase()) || y.getBack().toLowerCase().matches(pattern.toLowerCase())) {
+                        matches.add(y);
+                    }
+                }
+            }
+        }
         return matches;
     }
 }

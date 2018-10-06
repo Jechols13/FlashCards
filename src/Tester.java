@@ -10,6 +10,7 @@ public class Tester {
         System.out.println("Hello. Welcome to Flashcards. " +
                 "\nTo create a new Flashcard, enter in 'flash' at any time. " +
                 "\nTo read in a File enter 'read'" +
+                "\nTo search for a pattern within Flashcards enter 'search'" +
                 "\nTo begin study, just enter 'study' at anytime." +
                 "\nTo exit the program, 'exit'");
 
@@ -40,8 +41,16 @@ public class Tester {
                 input="";
 
             }
+
+            else if(input.toLowerCase().equals("search")){
+                System.out.println("Please enter in pattern to search for");
+                String pattern = in.nextLine();
+                System.out.println(master.getCardsWith(pattern).toString());
+                input="";
+
+            }
             else{
-                System.out.println("Please make another selection: \nFLash, Read, Study, Exit");
+                System.out.println("Please make another selection: \nFLash, Read, Search, Study, Exit");
                 input = in.nextLine();
 
             }
