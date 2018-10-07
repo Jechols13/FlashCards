@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 public class Tester {
 
     public static void main(String args[]) throws FileNotFoundException {
 
-        String input ="";
+        String input;
         Master master = new Master();
 
         System.out.println("Hello. Welcome to Flashcards. " +
@@ -15,41 +16,37 @@ public class Tester {
                 "\nTo exit the program, 'exit'");
 
         Scanner in = new Scanner(System.in);
-        input =  in.nextLine();
+        input = in.nextLine();
 
 
-        while(!input.equals("exit")){
+        while (!input.equals("exit")) {
 
-            if(input.toLowerCase().equals("flash")){
+            if (input.toLowerCase().equals("flash")) {
                 master.CreateFlashCard();
-                input="";
+                input = "";
 
-            }
-            else if(input.toLowerCase().equals("study")){
+            } else if (input.toLowerCase().equals("study")) {
                 System.out.println("\nStudy initiated! Good luck");
                 master.studyPromt();
-                input="";
+                input = "";
 
-            }
-            else if(input.toLowerCase().equals("read")){
+            } else if (input.toLowerCase().equals("read")) {
                 System.out.println("Please type the file name you wish to read");
                 String fileName = in.nextLine();
 
                 System.out.println("Reading in File.....");
                 master.readFile(fileName);
-                System.out.println("File read completely.");
-                input="";
+                System.out.println("\nFile read completely." +
+                        "\nTotal of " + master.getCount() + " cards created.\n");
+                input = "";
 
-            }
-
-            else if(input.toLowerCase().equals("search")){
+            } else if (input.toLowerCase().equals("search")) {
                 System.out.println("Please enter in pattern to search for");
                 String pattern = in.nextLine();
                 System.out.println(master.getCardsWith(pattern).toString());
-                input="";
+                input = "";
 
-            }
-            else{
+            } else {
                 System.out.println("Please make another selection: \nFLash, Read, Search, Study, Exit");
                 input = in.nextLine();
 

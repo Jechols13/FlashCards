@@ -5,16 +5,17 @@ import java.util.Scanner;
 
 public class Master {
 
-    Box box1 = new Box(1);
-    Box box2 = new Box(2);
-    Box box3 = new Box(3);
-    Box box4 = new Box(4);
-    Box box5 = new Box(5);
-    FlashCard x;
+    private Box box1 = new Box(1);
+    private Box box2 = new Box(2);
+    private Box box3 = new Box(3);
+    private Box box4 = new Box(4);
+    private Box box5 = new Box(5);
+    private FlashCard x;
 
+    private String front = "";
+    private String back = "";
 
-    String front = "";
-    String back = "";
+    private int count=0;
 
     Scanner in = new Scanner(System.in);
 
@@ -126,7 +127,7 @@ public class Master {
                 case "b":
                     System.out.println("Great! Whats the answer?");
                     String guess = in.nextLine();
-                    if (guess.equals(ans)) {
+                    if (guess.toLowerCase().equals(ans.toLowerCase())) {
                         System.out.println("Great that's correct! :)");
                         moveForward(f, b);
                     } else {
@@ -207,9 +208,9 @@ public class Master {
                 this.back = in.nextLine();
                 this.x = new FlashCard(this.front, this.back);
                 this.box1.addFlashcard(this.x);
+                count++;
             }
         }
-
         in.close();
     }
 
@@ -217,7 +218,6 @@ public class Master {
         assert pattern != null || pattern != "";
         ArrayList<FlashCard> matches = new ArrayList<FlashCard>();
         Stack<Box> all = new Stack<Box>();
-
         if (box5.getFlashcards().size() == 0 && box4.getFlashcards().size() == 0 && box3.getFlashcards().size() == 0
                 && box2.getFlashcards().size() == 0 && box1.getFlashcards().size() == 0) {
             System.out.println("Oops. Looks like you dont have any Flashcards yet!");
@@ -240,5 +240,9 @@ public class Master {
             }
         }
         return matches;
+    }
+
+    public int getCount(){
+        return this.count;
     }
 }
