@@ -198,10 +198,12 @@ public class Master {
 
     }
 
+
+
     public void readFile(String fileName) throws FileNotFoundException {
         File f = new File(fileName);
         Scanner in = new Scanner(f);
-        in.useDelimiter(" \n");
+        this.count =0;
         while (in.hasNext()) {
             this.front = in.nextLine();
             if (!(front.equals(""))) {
