@@ -33,13 +33,7 @@ public class FlashCard {
 
     @Override
     public String toString() {
-        int i = (int) (Math.random()*10);
-        if( i < 5){
-            return  front + "";
-        }
-        else {
-            return back + "";
-        }
+        return "Front: " + front + " Back: " + back;
     }
 
 }
